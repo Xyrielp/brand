@@ -13,7 +13,7 @@ export default function Home() {
           className="absolute inset-0 bg-cover bg-center opacity-60"
           style={{
             backgroundImage:
-              "url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&q=80')",
+              "url('https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1400&q=80')",
           }}
         />
         <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">

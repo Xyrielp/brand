@@ -27,8 +27,8 @@ export const products: Product[] = [
       { name: "Slate", hex: "#8A9BA8" },
     ],
     images: [
-      "https://images.unsplash.com/photo-1594938298603-c8148c4b4357?w=600&q=80",
-      "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=600&q=80",
+      "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=600&q=80",
+      "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&q=80",
     ],
     badge: "Bestseller",
     stock: { XS: 5, S: 2, M: 0, L: 8, XL: 3 },
@@ -47,8 +47,8 @@ export const products: Product[] = [
       { name: "Black", hex: "#1A1A1A" },
     ],
     images: [
-      "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80",
       "https://images.unsplash.com/photo-1594938298603-c8148c4b4357?w=600&q=80",
+      "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80",
     ],
     badge: "Sale",
     stock: { XS: 1, S: 4, M: 6, L: 2 },
@@ -67,8 +67,8 @@ export const products: Product[] = [
       { name: "Black", hex: "#1A1A1A" },
     ],
     images: [
-      "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=600&q=80",
       "https://images.unsplash.com/photo-1583744946564-b52ac1c389c8?w=600&q=80",
+      "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=600&q=80",
     ],
     stock: { XS: 10, S: 8, M: 3, L: 7, XL: 5 },
     description: "Fine-rib cotton blend, slim fit, cropped length.",
@@ -85,8 +85,8 @@ export const products: Product[] = [
       { name: "Charcoal", hex: "#4A4A4A" },
     ],
     images: [
-      "https://images.unsplash.com/photo-1542272604-787c3835535d?w=600&q=80",
       "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=600&q=80",
+      "https://images.unsplash.com/photo-1542272604-787c3835535d?w=600&q=80",
     ],
     badge: "New",
     stock: { S: 3, M: 5, L: 4, XL: 2 },
@@ -104,8 +104,8 @@ export const products: Product[] = [
       { name: "Dusty Rose", hex: "#C4A0A0" },
     ],
     images: [
-      "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=600&q=80",
       "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=600&q=80",
+      "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=600&q=80",
     ],
     badge: "New",
     stock: { XS: 2, S: 4, M: 3, L: 1 },
@@ -124,8 +124,8 @@ export const products: Product[] = [
       { name: "Ivory", hex: "#FFFFF0" },
     ],
     images: [
-      "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&q=80",
       "https://images.unsplash.com/photo-1548126032-079a0fb0099d?w=600&q=80",
+      "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&q=80",
     ],
     stock: { XS: 3, S: 5, M: 4, L: 6, XL: 2 },
     description: "Single-button closure, padded shoulders, fully lined.",
@@ -142,8 +142,8 @@ export const products: Product[] = [
       { name: "Sage", hex: "#9CAF88" },
     ],
     images: [
-      "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600&q=80",
       "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=600&q=80",
+      "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600&q=80",
     ],
     stock: { S: 6, M: 4, L: 3, XL: 5 },
     description: "Open-front, chunky rib knit, oversized fit.",
@@ -161,8 +161,8 @@ export const products: Product[] = [
       { name: "Cream", hex: "#F2EDE4" },
     ],
     images: [
-      "https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=600&q=80",
       "https://images.unsplash.com/photo-1571513722275-4b41940f54b8?w=600&q=80",
+      "https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=600&q=80",
     ],
     badge: "Bestseller",
     stock: { XS: 4, S: 2, M: 5, L: 3 },
