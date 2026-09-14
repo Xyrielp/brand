@@ -1,8 +1,9 @@
 "use client";
-import { useRef } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const categories = [
   {
@@ -27,30 +28,31 @@ const categories = [
   },
 ];
 
-export default function CategoryCarousel() {
-  const ref = useRef<HTMLDivElement>(null);
+const SPACING = 110;
+const COUNT = categories.length;
 
-  const scroll = (dir: "left" | "right") => {
-    if (!ref.current) return;
-    const card = ref.current.querySelector("a") as HTMLElement;
-    const amount = card ? card.offsetWidth + 12 : 200;
-    ref.current.scrollBy({ left: dir === "left" ? -amount : amount, behavior: "smooth" });
+export default function CategoryCarousel() {
+  const [active, setActive] = useState(0);
+  const router = useRouter();
+
+  const step = (dir: number) => {
+    setActive((prev) => (prev + dir + COUNT) % COUNT);
   };
 
   return (
-    <div className="flex flex-col gap-3 h-full">
-      {/* Arrows + label */}
+    <div className="flex flex-col gap-4 h-full">
+      {/* Label + arrows */}
       <div className="flex items-center justify-between">
         <p className="text-[10px] tracking-[0.3em] uppercase text-white/50">Browse</p>
         <div className="flex gap-2">
           <button
-            onClick={() => scroll("left")}
+            onClick={() => step(-1)}
             className="w-8 h-8 border border-white/20 flex items-center justify-center hover:border-white/60 transition-colors text-white"
           >
             <ChevronLeft size={14} />
           </button>
           <button
-            onClick={() => scroll("right")}
+            onClick={() => step(1)}
             className="w-8 h-8 border border-white/20 flex items-center justify-center hover:border-white/60 transition-colors text-white"
           >
             <ChevronRight size={14} />
@@ -58,33 +60,77 @@ export default function CategoryCarousel() {
         </div>
       </div>
 
-      {/* Cards */}
-      <div
-        ref={ref}
-        className="flex gap-3 overflow-x-auto scrollbar-hide"
-        style={{ scrollSnapType: "x mandatory" }}
-      >
-        {categories.map((cat) => (
-          <Link
-            key={cat.label}
-            href={cat.href}
-            className="group shrink-0 w-[160px]"
-            style={{ scrollSnapAlign: "start" }}
-          >
-            <div className="relative aspect-[3/4] overflow-hidden">
-              <Image
-                src={cat.image}
-                alt={cat.label}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-                sizes="160px"
-              />
-              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-300" />
-              <div className="absolute bottom-0 left-0 right-0 p-3">
-                <p className="font-display text-xl text-white leading-none">{cat.label}</p>
+      {/* Coverflow stage */}
+      <div className="relative flex-1 flex items-center justify-center" style={{ minHeight: 320 }}>
+        {categories.map((cat, i) => {
+          // Shortest-path offset with wraparound
+          let offset = i - active;
+          if (offset > COUNT / 2) offset -= COUNT;
+          if (offset < -COUNT / 2) offset += COUNT;
+
+          const absOffset = Math.abs(offset);
+          const scale = 1 - absOffset * 0.18;
+          const opacity = 1 - absOffset * 0.35;
+          const x = offset * SPACING;
+          const zIndex = 10 - absOffset;
+          const isCenter = offset === 0;
+
+          return (
+            <div
+              key={cat.label}
+              onClick={() => {
+                if (isCenter) router.push(cat.href);
+                else setActive(i);
+              }}
+              className="absolute cursor-pointer"
+              style={{
+                transform: `translateX(${x}px) scale(${scale})`,
+                opacity,
+                zIndex,
+                transition: "transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94), opacity 0.45s ease",
+                width: 160,
+              }}
+            >
+              <div className="relative overflow-hidden" style={{ aspectRatio: "3/4" }}>
+                <Image
+                  src={cat.image}
+                  alt={cat.label}
+                  fill
+                  className="object-cover"
+                  sizes="160px"
+                />
+                <div
+                  className="absolute inset-0 transition-colors duration-300"
+                  style={{ background: isCenter ? "rgba(0,0,0,0.1)" : "rgba(0,0,0,0.45)" }}
+                />
+                <div className="absolute bottom-0 left-0 right-0 p-3">
+                  <p className="font-display text-xl text-white leading-none">{cat.label}</p>
+                  {isCenter && (
+                    <p className="text-[10px] tracking-widest uppercase text-white/60 mt-1">
+                      Shop now →
+                    </p>
+                  )}
+                </div>
               </div>
             </div>
-          </Link>
+          );
+        })}
+      </div>
+
+      {/* Dots */}
+      <div className="flex justify-center gap-1.5">
+        {categories.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setActive(i)}
+            className="transition-all duration-300"
+            style={{
+              width: i === active ? 20 : 6,
+              height: 6,
+              borderRadius: 3,
+              background: i === active ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.25)",
+            }}
+          />
         ))}
       </div>
     </div>
