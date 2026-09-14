@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { products } from "@/lib/data";
 import ProductCard from "@/components/ProductCard";
+import CategoryCarousel from "@/components/CategoryCarousel";
 
 export default function Home() {
   const featured = products.filter((p) => p.badge).slice(0, 4);
@@ -39,6 +40,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <CategoryCarousel />
 
       {/* Featured */}
       <section className="py-24 max-w-7xl mx-auto px-6">
