@@ -12,7 +12,7 @@ const categories = [
   {
     label: "Bottoms",
     href: "/shop?category=bottoms",
-    image: "https://images.unsplash.com/photo-1594938298603-c8148c4b4357?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80",
   },
   {
     label: "Dresses",
