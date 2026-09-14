@@ -17,13 +17,13 @@ export default function Home() {
               "url('https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1400&q=80')",
           }}
         />
-        <div className="relative z-10 max-w-7xl mx-auto px-6 w-full h-full min-h-[90vh] flex items-center gap-12">
-          {/* Left: text */}
-          <div className="flex-1 pb-20 pt-20">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 w-full min-h-[90vh] flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-12 py-16">
+          {/* Text */}
+          <div className="flex-1">
             <p className="text-xs tracking-[0.3em] uppercase text-[var(--accent)] mb-4">
               New Season
             </p>
-            <h1 className="font-display text-6xl sm:text-8xl text-white leading-none mb-8 max-w-2xl">
+            <h1 className="font-display text-5xl sm:text-7xl lg:text-8xl text-white leading-none mb-8 max-w-2xl">
               Dress like you mean it.
             </h1>
             <div className="flex gap-4">
@@ -41,8 +41,8 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          {/* Right: category carousel */}
-          <div className="hidden lg:block w-[420px] shrink-0 py-12">
+          {/* Category carousel */}
+          <div className="w-full lg:w-[420px] shrink-0">
             <CategoryCarousel />
           </div>
         </div>

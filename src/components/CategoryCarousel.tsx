@@ -61,7 +61,7 @@ export default function CategoryCarousel() {
       </div>
 
       {/* Coverflow stage */}
-      <div className="relative flex-1 flex items-center justify-center" style={{ minHeight: 320 }}>
+      <div className="relative flex items-center justify-center" style={{ height: 280 }}>
         {categories.map((cat, i) => {
           // Shortest-path offset with wraparound
           let offset = i - active;
