@@ -33,62 +33,60 @@ export default function CategoryCarousel() {
   const scroll = (dir: "left" | "right") => {
     if (!ref.current) return;
     const card = ref.current.querySelector("a") as HTMLElement;
-    const amount = card ? card.offsetWidth + 24 : 300;
+    const amount = card ? card.offsetWidth + 12 : 200;
     ref.current.scrollBy({ left: dir === "left" ? -amount : amount, behavior: "smooth" });
   };
 
   return (
-    <section className="py-16 max-w-7xl mx-auto px-6">
-      <div className="flex items-end justify-between mb-8">
-        <div>
-          <p className="text-xs tracking-widest uppercase text-[var(--muted)] mb-1">Browse by</p>
-          <h2 className="font-display text-4xl text-[var(--ink)]">Category</h2>
-        </div>
+    <div className="flex flex-col gap-3 h-full">
+      {/* Arrows + label */}
+      <div className="flex items-center justify-between">
+        <p className="text-[10px] tracking-[0.3em] uppercase text-white/50">Browse</p>
         <div className="flex gap-2">
           <button
             onClick={() => scroll("left")}
-            className="w-9 h-9 border border-[var(--border)] flex items-center justify-center hover:border-[var(--ink)] transition-colors"
+            className="w-8 h-8 border border-white/20 flex items-center justify-center hover:border-white/60 transition-colors text-white"
           >
-            <ChevronLeft size={16} />
+            <ChevronLeft size={14} />
           </button>
           <button
             onClick={() => scroll("right")}
-            className="w-9 h-9 border border-[var(--border)] flex items-center justify-center hover:border-[var(--ink)] transition-colors"
+            className="w-8 h-8 border border-white/20 flex items-center justify-center hover:border-white/60 transition-colors text-white"
           >
-            <ChevronRight size={16} />
+            <ChevronRight size={14} />
           </button>
         </div>
       </div>
 
+      {/* Cards */}
       <div
         ref={ref}
-        className="flex gap-6 overflow-x-auto scrollbar-hide"
+        className="flex gap-3 overflow-x-auto scrollbar-hide"
         style={{ scrollSnapType: "x mandatory" }}
       >
         {categories.map((cat) => (
           <Link
             key={cat.label}
             href={cat.href}
-            className="group shrink-0 w-[260px] sm:w-[300px]"
+            className="group shrink-0 w-[160px]"
             style={{ scrollSnapAlign: "start" }}
           >
-            <div className="relative aspect-[3/4] overflow-hidden bg-[#f0ede8]">
+            <div className="relative aspect-[3/4] overflow-hidden">
               <Image
                 src={cat.image}
                 alt={cat.label}
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
-                sizes="300px"
+                sizes="160px"
               />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300" />
-              <div className="absolute bottom-0 left-0 right-0 p-5">
-                <p className="font-display text-3xl text-white leading-none">{cat.label}</p>
-                <p className="text-[10px] tracking-widest uppercase text-white/70 mt-1">Shop now →</p>
+              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-300" />
+              <div className="absolute bottom-0 left-0 right-0 p-3">
+                <p className="font-display text-xl text-white leading-none">{cat.label}</p>
               </div>
             </div>
           </Link>
         ))}
       </div>
-    </section>
+    </div>
   );
 }

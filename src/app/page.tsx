@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div className="page-enter">
       {/* Hero */}
-      <section className="relative min-h-[90vh] flex items-end pb-20 overflow-hidden bg-[#1a1a1a]">
+      <section className="relative min-h-[90vh] overflow-hidden bg-[#1a1a1a]">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-60"
           style={{
@@ -17,31 +17,36 @@ export default function Home() {
               "url('https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1400&q=80')",
           }}
         />
-        <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
-          <p className="text-xs tracking-[0.3em] uppercase text-[var(--accent)] mb-4">
-            New Season
-          </p>
-          <h1 className="font-display text-6xl sm:text-8xl text-white leading-none mb-8 max-w-2xl">
-            Dress like you mean it.
-          </h1>
-          <div className="flex gap-4">
-            <Link
-              href="/shop"
-              className="px-8 py-4 bg-white text-[var(--ink)] text-xs tracking-widest uppercase hover:bg-[var(--accent)] hover:text-white transition-all duration-300"
-            >
-              Shop Now
-            </Link>
-            <Link
-              href="/shop"
-              className="px-8 py-4 border border-white text-white text-xs tracking-widest uppercase hover:bg-white/10 transition-all duration-300"
-            >
-              Explore Vibes
-            </Link>
+        <div className="relative z-10 max-w-7xl mx-auto px-6 w-full h-full min-h-[90vh] flex items-center gap-12">
+          {/* Left: text */}
+          <div className="flex-1 pb-20 pt-20">
+            <p className="text-xs tracking-[0.3em] uppercase text-[var(--accent)] mb-4">
+              New Season
+            </p>
+            <h1 className="font-display text-6xl sm:text-8xl text-white leading-none mb-8 max-w-2xl">
+              Dress like you mean it.
+            </h1>
+            <div className="flex gap-4">
+              <Link
+                href="/shop"
+                className="px-8 py-4 bg-white text-[var(--ink)] text-xs tracking-widest uppercase hover:bg-[var(--accent)] hover:text-white transition-all duration-300"
+              >
+                Shop Now
+              </Link>
+              <Link
+                href="/shop"
+                className="px-8 py-4 border border-white text-white text-xs tracking-widest uppercase hover:bg-white/10 transition-all duration-300"
+              >
+                Explore Vibes
+              </Link>
+            </div>
+          </div>
+          {/* Right: category carousel */}
+          <div className="hidden lg:block w-[420px] shrink-0 py-12">
+            <CategoryCarousel />
           </div>
         </div>
       </section>
-
-      <CategoryCarousel />
 
       {/* Featured */}
       <section className="py-24 max-w-7xl mx-auto px-6">
